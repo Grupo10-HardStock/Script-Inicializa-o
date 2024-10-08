@@ -35,15 +35,30 @@ fi
 sudo systemctl start docker
 sudo systemctl enable docker
 
-docker_image="pedrobarbosasouza/imagem_node:tagname"
+docker_image="pedrobarbosasouza/imagem_node:valid_tag"
 
 echo "Fazendo o pull da imagem Docker: $docker_image"
-sudo docker pull $docker_image
+if sudo docker pull $docker_image; then
+    echo "Imagem $docker_image baixada com sucesso"
+else
+    echo "Erro ao baixar a imagem $docker_image"
+    exit 1
+fi
 
 echo "Rodando a imagem Docker"
-sudo docker run -d --name meu_container -p 3333:3333 $docker_image
+if sudo docker run -d --name meu_container -p 3333:3333 $docker_image; then
+    echo "Container iniciado com sucesso"
+else
+    echo "Erro ao iniciar o container"
+    exit 1
+fi
 
 sudo docker ps -a
 
 echo "Realizando o push da imagem Docker"
-docker push $docker_image
+if sudo docker push $docker_image; then
+    echo "Push realizado com sucesso"
+else
+    echo "Erro ao realizar o push da imagem"
+    exit 1
+fi
