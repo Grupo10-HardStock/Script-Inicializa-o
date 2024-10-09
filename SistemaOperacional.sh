@@ -36,7 +36,7 @@ sudo systemctl enable docker
 sudo docker login
 
 
-docker_image="pedrobarbosasouza/imagem_node:tagname"
+docker_image="pedrobarbosasouza/imagem_node:2.0"
 
 echo "Fazendo o pull da imagem Docker: $docker_image"
 if sudo docker pull "$docker_image"; then
