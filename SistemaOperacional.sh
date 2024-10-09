@@ -38,6 +38,7 @@ fi
 # Iniciando o serviço do Docker
 sudo systemctl start docker
 sudo systemctl enable docker
+sudo docker login
 
 # Nome da imagem e tag
 docker_image="pedrobarbosasouza/imagem_node"
