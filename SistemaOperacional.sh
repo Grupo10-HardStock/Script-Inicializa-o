@@ -62,15 +62,4 @@ fi
 
 sudo docker ps -a
 
-# Push da imagem Docker (apenas se necessário)
-echo "Gostaria de fazer o push da imagem Docker? [s/n]"
-read get 
-if [ "$get" == "s" ]; then 
-    echo "Realizando o push da imagem Docker"
-    if sudo docker push "$docker_image:$docker_tag"; then
-        echo "Push realizado com sucesso"
-    else
-        echo "Erro ao realizar o push da imagem"
-        exit 1
-    fi
-fi
+
