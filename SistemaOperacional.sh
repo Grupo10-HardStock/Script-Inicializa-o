@@ -41,7 +41,7 @@ sudo systemctl enable docker
 
 # Nome da imagem e tag
 docker_image="pedrobarbosasouza/imagem_node"
-docker_tag="latest"  # Modifique essa tag conforme necessário
+docker_tag="tagname"  # Modifique essa tag conforme necessário
 
 # Pull da imagem Docker
 echo "Fazendo o pull da imagem Docker: $docker_image:$docker_tag"
@@ -58,8 +58,16 @@ if sudo docker run -d --name meu_container -p 3333:3333 "$docker_image:$docker_t
     echo "Container iniciado com sucesso"
 else
     echo "Erro ao iniciar o container"
+    exit 1
 fi
 
 sudo docker ps -a
 
-
+# Fazendo o push da imagem Docker
+echo "Fazendo o push da imagem Docker: $docker_image:$docker_tag"
+if sudo docker push "$docker_image:$docker_tag"; then
+    echo "Imagem $docker_image:$docker_tag enviada com sucesso"
+else
+    echo "Erro ao enviar a imagem $docker_image:$docker_tag"
+    exit 1
+fi
