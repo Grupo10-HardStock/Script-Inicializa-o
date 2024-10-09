@@ -10,7 +10,7 @@ sudo apt update && sudo apt upgrade -y
 echo "Verificando a versão do Python"
 python3 --version
 
-if [ $? -eq 0 ]; then 
+if [ $? = 0 ]; then 
     echo "Python instalado"
 else 
     echo "Python não instalado"
@@ -24,7 +24,7 @@ fi
 # Verificando a versão do Docker
 echo "Verificando a versão do Docker"
 docker --version
-if [ $? -eq 0 ]; then 
+if [ $? = 0 ]; then 
     echo "Docker instalado"
 else 
     echo "Docker não instalado"
@@ -58,10 +58,8 @@ if sudo docker run -d --name meu_container -p 3333:3333 "$docker_image:$docker_t
     echo "Container iniciado com sucesso"
 else
     echo "Erro ao iniciar o container"
-    exit 1
 fi
 
-# Listando containers
 sudo docker ps -a
 
 # Push da imagem Docker (apenas se necessário)
