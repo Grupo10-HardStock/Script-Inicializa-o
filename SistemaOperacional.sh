@@ -36,15 +36,14 @@ sudo systemctl enable docker
 sudo docker login
 
 
-docker_image="pedrobarbosasouza/imagem_node"
-docker_tag="tagname"  
+docker_image="pedrobarbosasouza/imagem_node:tagname"
 
-echo "Fazendo o pull da imagem Docker: $docker_image:$docker_tag"
+echo "Fazendo o pull da imagem Docker: $docker_image"
 if sudo docker pull "$docker_image:$docker_tag"; then
     echo "Imagem $docker_image:$docker_tag baixada com sucesso"
 else
     echo "Erro ao baixar a imagem $docker_image:$docker_tag"
-    exit 1
+X
 fi
 
 echo "Rodando a imagem Docker"
