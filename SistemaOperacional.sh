@@ -39,15 +39,15 @@ sudo docker login
 docker_image="pedrobarbosasouza/imagem_node:tagname"
 
 echo "Fazendo o pull da imagem Docker: $docker_image"
-if sudo docker pull "$docker_image:$docker_tag"; then
-    echo "Imagem $docker_image:$docker_tag baixada com sucesso"
+if sudo docker pull "$docker_image"; then
+    echo "Imagem $docker_image baixada com sucesso"
 else
-    echo "Erro ao baixar a imagem $docker_image:$docker_tag"
+    echo "Erro ao baixar a imagem $docker_image"
 X
 fi
 
 echo "Rodando a imagem Docker"
-if sudo docker run -d --name meu_container -p 3333:3333 "$docker_image:$docker_tag"; then
+if sudo docker run -d --name meu_container -p 3333:3333 "$docker_image"; then
     echo "Container iniciado com sucesso"
 else
     echo "Erro ao iniciar o container"
