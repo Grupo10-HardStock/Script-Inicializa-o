@@ -58,16 +58,16 @@ if sudo docker run -d --name meu_container -p 3333:3333 "$docker_image:$docker_t
     echo "Container iniciado com sucesso"
 else
     echo "Erro ao iniciar o container"
-    exit 1
 fi
 
+# Verificando containers
 sudo docker ps -a
 
-# Fazendo o push da imagem Docker
-echo "Fazendo o push da imagem Docker: $docker_image:$docker_tag"
+# Docker push para o repositório Docker Hub
+echo "Fazendo push da imagem Docker para o repositório: $docker_image:$docker_tag"
 if sudo docker push "$docker_image:$docker_tag"; then
-    echo "Imagem $docker_image:$docker_tag enviada com sucesso"
+    echo "Imagem $docker_image:$docker_tag enviada com sucesso para o Docker Hub"
 else
-    echo "Erro ao enviar a imagem $docker_image:$docker_tag"
+    echo "Erro ao enviar a imagem $docker_image:$docker_tag para o Docker Hub"
     exit 1
 fi
